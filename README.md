@@ -6,3 +6,6 @@ TODOs:
 - documentation
 - more configuration options
 - responsiveness
+- nicer curve
+
+The preview page with some example song by Kevin MacLeod is available [here](https://bartor.github.io/audio-bar-visualizer/);
