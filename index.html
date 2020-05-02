@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test page</title>
+    <script src="./BarVisualizer.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const canvasElement = document.getElementById('canvas');
+            const audioElement = document.getElementById('audio');
+
+            let visuzalizer;
+            audioElement.addEventListener('play', () => {
+                if (!visuzalizer) {
+                    // audio context has to be initialized manually according to some chrome policies
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    const audioCtx = new AudioContext();
+                    visuzalizer = new BarVisualizer(audioCtx, audioElement, canvasElement, {
+                        mirror: true,
+                        fill: true,
+                    });
+                    visuzalizer.draw();
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <audio id="audio" src="./test.mp3" controls crossorigin="anonymous"></audio>
+    <p>Music by Kevin MacLeod. Available under the Creative Commons Attribution 3.0 Unported license. <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100873">Download link.</a></p>
+    <canvas id="canvas" width="1000px"></canvas>
+</body>
+
+</html>
